@@ -1,11 +1,11 @@
 package com.tenniscourts.guests;
 
-import com.tenniscourts.reservations.Reservation;
-import com.tenniscourts.reservations.ReservationStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Optional;
 
 public interface GuestRepository extends JpaRepository<Guest, Long> {
+
+    Optional<Guest> findByIdOrNameContaining(Long id, String name);
+
 }

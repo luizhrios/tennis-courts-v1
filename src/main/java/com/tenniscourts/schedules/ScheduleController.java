@@ -21,7 +21,7 @@ public class ScheduleController extends BaseRestController {
 
     private final ScheduleService scheduleService;
 
-    @PostMapping(value = "/addScheduleTennisCourt")
+    @PutMapping(value = "/addScheduleTennisCourt")
     @ApiOperation(value = "Create schedule slots for a given tennis court")
     public ResponseEntity<Void> addScheduleTennisCourt(@RequestBody CreateScheduleRequestDTO createScheduleRequestDTO) throws Throwable {
         return ResponseEntity.created(locationByEntity(scheduleService.addSchedule(createScheduleRequestDTO.getTennisCourtId(), createScheduleRequestDTO).getId())).build();
