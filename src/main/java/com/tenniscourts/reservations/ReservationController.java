@@ -15,7 +15,7 @@ public class ReservationController extends BaseRestController {
 
     private final ReservationService reservationService;
 
-    @PostMapping("book")
+    @PutMapping("book")
     @ApiOperation(value = "Book Reservation")
     public ResponseEntity<Void> bookReservation(@RequestBody CreateReservationRequestDTO createReservationRequestDTO) throws Throwable {
         return ResponseEntity.created(locationByEntity(reservationService.bookReservation(createReservationRequestDTO).getId())).build();

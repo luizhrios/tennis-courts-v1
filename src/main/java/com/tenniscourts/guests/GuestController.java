@@ -31,7 +31,7 @@ public class GuestController extends BaseRestController {
         return ResponseEntity.ok(guestService.updateGuest(guest));
     }
 
-    @PostMapping("findById")
+    @PostMapping("findByIdOrName")
     @ApiOperation(value = "Find Guests")
     public ResponseEntity<List<GuestDTO>> findGuest(Long guestId, String guestName) {
         return ResponseEntity.ok(guestService.findByIdOrName(guestId, guestName));

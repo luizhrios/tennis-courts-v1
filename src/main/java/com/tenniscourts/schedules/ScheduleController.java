@@ -29,14 +29,14 @@ public class ScheduleController extends BaseRestController {
 
     @GetMapping(value = "/findSchedulesByDates")
     @ApiOperation(value = "See what time slots are free")
-    public ResponseEntity<List<ScheduleDTO>> findSchedulesByDates(@DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
-                                                                  @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
+    public ResponseEntity<List<ScheduleDTO>> findSchedulesByDates(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+                                                                  @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
         return ResponseEntity.ok(scheduleService.findSchedulesByDates(LocalDateTime.of(startDate, LocalTime.of(0, 0)), LocalDateTime.of(endDate, LocalTime.of(23, 59))));
     }
 
-    @PostMapping(value = "/findByScheduleId")
+    @GetMapping(value = "/findByScheduleId/{id}")
     @ApiOperation(value = "Find Schedule")
-    public ResponseEntity<ScheduleDTO> findByScheduleId(Long scheduleId) throws Throwable {
+    public ResponseEntity<ScheduleDTO> findByScheduleId(@PathVariable("id") Long scheduleId) throws Throwable {
         return ResponseEntity.ok(scheduleService.findSchedule(scheduleId));
     }
 }

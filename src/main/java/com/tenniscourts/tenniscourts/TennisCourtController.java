@@ -21,12 +21,6 @@ public class TennisCourtController extends BaseRestController {
         return ResponseEntity.created(locationByEntity(tennisCourtService.addTennisCourt(tennisCourtDTO).getId())).build();
     }
 
-    @PutMapping("/addTennisCourtt")
-    @ApiOperation("Add a Tennis Courtt")
-    public ResponseEntity<Void> addTennisCourtt(@RequestBody TennisCourtDTO tennisCourtDTO) {
-        return ResponseEntity.created(locationByEntity(5L)).build();
-    }
-
     @GetMapping("/findById/{id}")
     @ApiOperation("Find a Tennis Court")
     public ResponseEntity<TennisCourtDTO> findTennisCourtById(@PathVariable("id") Long tennisCourtId) throws Throwable {
